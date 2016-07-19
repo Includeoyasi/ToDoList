@@ -1,0 +1,27 @@
+.task{
+	margin: 5px;
+}
+button{
+	margin-top: 10px;
+}
+.small p{
+	font-size: 12px;
+}
+.right{
+	float: right;
+}
+.my_tasks table{
+	width: 80%;
+}
+.my_tasks_body{
+	padding-left: 30px;
+	padding-right: 30px;
+	padding-bottom: 30px;
+	padding-top: 20px;
+}
+.my_tasks_element{
+	padding: 10px;
+	background-color: #fff;
+	box-shadow: 0 0 10px rgba(0,0,0,0.5);
+	margin-bottom: 10px;
+}

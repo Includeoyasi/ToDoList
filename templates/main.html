@@ -1,0 +1,58 @@
+<div class="main-view">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+				<h3>Add task</h3>
+				<div>
+					<input type="text" class="form-control" name="task_text" ng-model="task_text">
+				</div>
+				<div>
+					<button class="btn btn-default right" ng-click="add(task_text)" type="submit" ng-show="task_text">Add</button>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<h3>Filters</h3>
+				<input type="text" class="form-control" name="sort_task" ng-model="sort_task">
+				<div>
+					<button class="btn btn-primary" type="button" ng-click="sort_all()">
+						All <span class="badge" ng-bind="tasks.length"></span>
+					</button>
+					<button class="btn btn-primary" type="button" ng-click="sort_active()">
+						Active <span class="badge" ng-bind="how_many_active()" ng-click="filter_active()"></span>
+					</button>
+					<button class="btn btn-primary" type="button" ng-click="sort_complite()">
+						Complite <span class="badge" ng-bind="how_many_complite()" ng-click="filter_complite()"></span>
+					</button>
+				</div>
+			</div>
+			<h3>My tasks</h3>
+			<div class="col-md-12 my_tasks_body">
+				<div class="my_tasks_element" ng-show="tasks.length==0" class="my_tasks_element">
+					<h4>текст задачи :)</h4>
+					<p class="small">16:00:20 19.06.2016</p>
+					<div class="checkbox">
+						<label>
+							<input type="checkbox" value="">
+							активность задачи
+						</label>
+					</div>
+					<button class="btn btn-default" type="submit">завершениe</button>
+					<button class="btn btn-default" type="submit">удалениe</button>
+				</div>
+				<div class="my_tasks_element" ng-repeat="task in tasks | filter: sort_task | filter: sort_type">
+					<p ng-bind="'№'+{{$index+1}}" class="right"></p>
+					<h4 ng-bind="task.text"></h4>
+					<p class="small" ng-bind="task.time"></p>
+					<div class="checkbox">
+						<label>
+							<input type="checkbox" value="active" ng-click="activate($index)">
+							Active task
+						</label>
+					</div>
+					<button class="btn btn-default" ng-click="complite($index)" type="submit">Complite</button>
+					<button class="btn btn-default" ng-click="del($index)" type="submit">Del</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
